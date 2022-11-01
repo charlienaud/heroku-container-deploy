@@ -1,0 +1,20 @@
+name: 'manual-test'
+on:
+  workflow_dispatch:
+
+jobs:
+  test-action:
+    name: Test action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: heroku-container-deploy
+
+      - name: test action locally
+        uses: ./
+        with:
+          who-to-greet: 'Mona the Octocatt'
+          # heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          # heroku_email: ${{secrets.HEROKU_EMAIL}}
+        
